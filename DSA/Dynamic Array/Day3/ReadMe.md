@@ -1,4 +1,4 @@
-# Dynamic Array – Day 2
+# Dynamic Array – Day 3
 
 ## What I Learned Today
 
