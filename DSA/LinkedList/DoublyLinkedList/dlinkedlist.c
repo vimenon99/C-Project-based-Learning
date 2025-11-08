@@ -150,6 +150,43 @@ void deleteAt(dlist *list, int index){
 
 }
 
+/*Iterate through till node data is equal to target
+ *If found return the counter which is the index in this case
+*/
+void search(dlist *list, int val){
+	Node *tnode = list->head;
+	int ind = 0;
+	while(tnode->data != val){
+		tnode = tnode->next;
+		ind++;
+	}
+	printf("Caught at Index %d\n", ind);
+}
+
+/*Reversing is started with a curr node and a tnode where it stores previous node 
+ *then it switches current previous to curr next
+ *and curr next to prev
+ * lastly switch the last node to head
+ */
+void reverse(dlist *list){
+	Node *curr = list->head;
+	Node *tnode = NULL;
+	while(curr != NULL)
+	{
+		tnode = curr->prev;
+		curr->prev = curr->next;
+		curr->next = tnode;
+		curr = curr->prev;
+
+	}
+	if (tnode != NULL)
+	{
+		list->head = tnode->prev;
+
+	}
+}
+
+
 
 int main(){
 	dlist *list = createlist();
@@ -158,6 +195,9 @@ int main(){
 	append(list, 30);
 	insertAt(list, 1, 15);
 	deleteAt(list, 1);
+	traverse(list);
+	search(list, 30);
+	rverse(list);
 	traverse(list);
 	return 0;
 }
